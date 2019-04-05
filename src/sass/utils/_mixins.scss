@@ -40,3 +40,22 @@
       @warn 'Invalid breakpoint: #{$breakpoint}.';
     }
   }
+
+  @mixin scrollbar{
+    &::-webkit-scrollbar-track{
+      background-color: #F5F5F5;
+      transform: translateX(10px);
+    }
+  
+    &::-webkit-scrollbar{
+      width: 10px;
+      background-color: #F5F5F5;
+      border: 5px solid black;
+      transform: translateX(10px);
+    }
+  
+    &::-webkit-scrollbar-thumb{
+      background-color: color(yellow);
+      transform: translateX(10px);
+    }
+  }

@@ -1,0 +1,7 @@
+.map{
+    flex: 1;
+
+    @include respond-above(sm){
+        flex: 2;
+    }
+}

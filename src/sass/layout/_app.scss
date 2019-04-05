@@ -1,0 +1,12 @@
+.app{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    border: 4px solid color(blue);
+    display: flex;
+    flex-direction: column;
+
+    @include respond-above(sm){
+        flex-direction: row;
+    }
+}

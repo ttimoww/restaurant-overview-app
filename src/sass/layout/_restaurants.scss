@@ -1,0 +1,13 @@
+.restaurants{
+    border-top: 4px solid color(blue);
+    overflow: auto;
+    position: relative;
+    flex: 1;
+
+    @include respond-above(sm){
+        border-top: none;
+        border-left: 4px solid color(blue);
+    }
+
+    @include scrollbar;
+}
