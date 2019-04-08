@@ -3,11 +3,52 @@ import Map from './map/Map';
 import Restaurants from './restaurants/Restaurants';
 
 class App extends Component {
+constructor(){
+  super();
+  this.state = {
+    restaurantsLoaded : false,
+    restaurants : []
+  }
+}
+
+  /**
+   * Add restaurant to current state
+   * @param {string} name Name of the restaurant
+   * @param {string} id Id of the restaurant
+   * @param {string} rating Rating of the restaurant
+   * @param {string} photo Photo reference of the restaurant
+   */
+  handleAddRestaurant = (name, id, rating, photo) =>{
+    this.setState((prevState) => {
+      return{
+        restaurants : [
+          ...prevState.restaurants,
+          {
+            name: name,
+            id: id,
+            rating: rating,
+            photo: photo
+          }
+        ]
+      }
+    })
+  }
+
+  /**
+   * Toggle the restaurantsloaded property inside state'
+   * @param {boolean} bool Value to set the prop to
+   */
+  handleToggleRestaurantsLoaded = (bool) => this.setState({restaurantsLoaded: bool});
+
+  /**
+   * Empty all the curent restaurants
+   */
+  handleEmptyAllRestaurants = () => this.setState({restaurants: []});
 
   render() {
     return (
       <div className="app">
-        <Map />
+        <Map addRestaurant={this.handleAddRestaurant} toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} emptyAllRestaurants={this.handleEmptyAllRestaurants} />
         <Restaurants />
       </div>
     );

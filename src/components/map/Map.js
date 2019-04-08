@@ -20,7 +20,7 @@ class Map extends Component {
 
     /**
      * Function that receives the google maps object when map is loaded
-     * @param {map} object The google map object
+     * @param {object} map The google map object
      */
     handleApiLoaded = (map, maps) => {
         const self = this;
@@ -34,7 +34,6 @@ class Map extends Component {
      * @param {object} map The google map object
      */
     getRestaurants = (map) => {
-
         /**
          * Calculates the radius of the current map view
          * @param {object} map Object of the current google map
@@ -52,6 +51,10 @@ class Map extends Component {
             return r * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1)) * 1000;
         }
 
+        // Set restaurantsLoaded to false, and delete all current restaurants in application state
+        this.props.toggleRestaurantsLoaded(false);
+        this.props.emptyAllRestaurants();
+
         const headers = {
             lat : map.getCenter().lat(),
             lng : map.getCenter().lng(),
@@ -66,11 +69,11 @@ class Map extends Component {
             for (let i = 0; i < data.results.length; i++) {
                 const name = data.results[i].name;
                 const id = data.results[i].id;
-                const rating = data.results[i].rating;
-                const photo = data.results[i].photos[0] ? data.results[i].photos[0].photo_reference : null ;
-
-                console.log(name, id, rating, photo);
+                const rating = data.results[i].rating || 0;
+                const photo = (data.results[i].photos) ? data.results[i].photos[0].photo_reference : null ;
+                this.props.addRestaurant(name, id, rating, photo);
             }
+            this.props.toggleRestaurantsLoaded(true);
         });
     }
 
