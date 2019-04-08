@@ -1,5 +1,7 @@
 .map{
     flex: 1;
+    height: 100%;
+    overflow: auto;
 
     @include respond-above(sm){
         flex: 2;
