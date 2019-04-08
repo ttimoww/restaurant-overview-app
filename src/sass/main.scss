@@ -8,5 +8,7 @@
 @import './components/buttons';
 
 @import './layout/app';
-@import './layout/map';
-@import './layout/restaurants';
+
+@import './layout/map/map';
+
+@import './layout/restaurants/restaurants';
