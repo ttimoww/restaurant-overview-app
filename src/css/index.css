@@ -38,6 +38,8 @@ html, body {
   overflow: auto;
   position: relative;
   flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
 }
 @media (min-width: 768px) {
   .restaurants {
@@ -58,6 +60,19 @@ html, body {
 .restaurants::-webkit-scrollbar-thumb {
   background-color: #f8ce0b;
   transform: translateX(10px);
+}
+
+.filter .filter__container {
+  border-left: 3px solid #3498db;
+  padding: 5px 5px 0px 5px;
+}
+.filter .filter__container p {
+  margin: 0 10px 0 0;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 /*# sourceMappingURL=index.css.map */

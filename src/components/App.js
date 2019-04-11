@@ -7,7 +7,8 @@ constructor(){
   super();
   this.state = {
     restaurantsLoaded : false,
-    restaurants : []
+    restaurants : [],
+    minRating: 0
   }
 }
 
@@ -45,11 +46,19 @@ constructor(){
    */
   handleEmptyAllRestaurants = () => this.setState({restaurants: []});
 
+  /**
+   * Handle the minimal rating change
+   * @param {number} rating The minimum rating
+   */
+  handleChangeRating = (rating) =>{
+    this.setState({minRating : rating})
+  }
+
   render() {
     return (
       <div className="app">
         <Map addRestaurant={this.handleAddRestaurant} toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} emptyAllRestaurants={this.handleEmptyAllRestaurants} />
-        <Restaurants />
+        <Restaurants changeRating={this.handleChangeRating} />
       </div>
     );
   }

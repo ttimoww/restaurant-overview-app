@@ -16,8 +16,6 @@ class Map extends Component {
         googlePlacesService : new GooglePlaces()
     }
 
-    
-
     /**
      * Function that receives the google maps object when map is loaded
      * @param {object} map The google map object

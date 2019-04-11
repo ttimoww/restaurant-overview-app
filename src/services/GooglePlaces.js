@@ -5,6 +5,7 @@ class GooglePlaces{
      * @param {headers} Object Object with the headers for the api call
      */
     nearbySearch = (headers) => {
+        // eslint-disable-next-line
         const url = `https://cors-anywhere.herokuapp.com/` + `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${headers.lat},${headers.lng}&radius=${headers.radius}&type=${headers.type}&key=${headers.key}`;
         return new Promise(function(resolve, reject) {
             var req = new XMLHttpRequest();

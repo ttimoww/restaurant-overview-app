@@ -1,0 +1,19 @@
+.filter{
+
+    .filter__container{
+        border-left: 3px solid color(blue);
+        padding: 5px 5px 0px 5px;
+
+        p{
+            margin: 0 10px 0 0;
+            font-size: 1em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .star-rating{
+        }
+    }
+}
