@@ -57,8 +57,8 @@ constructor(){
   render() {
     return (
       <div className="app">
-        <Map addRestaurant={this.handleAddRestaurant} toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} emptyAllRestaurants={this.handleEmptyAllRestaurants} />
-        <Restaurants changeRating={this.handleChangeRating} />
+        <Map restaurantsLoaded={this.state.restaurantsLoaded} addRestaurant={this.handleAddRestaurant} toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} emptyAllRestaurants={this.handleEmptyAllRestaurants} />
+        <Restaurants restaurants={this.state.restaurants} minRating={this.state.minRating} changeRating={this.handleChangeRating} />
       </div>
     );
   }

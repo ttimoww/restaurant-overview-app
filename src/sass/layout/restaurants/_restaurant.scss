@@ -1,0 +1,23 @@
+.restaurant{
+    margin-top: 10px;
+
+    .restaurant__container{
+        padding: 5px;
+        box-sizing: border-box;
+        border-left: 3px solid color(blue);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .restaurant__info{
+        h2{
+            font-size: 1em;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    }
+
+    .restaurant_photo{
+
+    }
+}

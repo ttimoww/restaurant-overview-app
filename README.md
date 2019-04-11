@@ -58,6 +58,7 @@ To run those 3 commands you can just do
 - [shortid](https://www.npmjs.com/package/shortid) is used for generating simple id's.
 - [React](http://facebook.github.io/react) is used for UI.
 - [Google Map React](https://www.npmjs.com/package/google-map-react) is used for a faster and more simple google map implementation.
+- [React Star Ratings](https://www.npmjs.com/package/react-star-ratings) is used for a simpler implementation of a star rating.
 
 ### CSS
 

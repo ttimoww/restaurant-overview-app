@@ -65,13 +65,27 @@ html, body {
 .filter .filter__container {
   border-left: 3px solid #3498db;
   padding: 5px 5px 0px 5px;
+  box-sizing: border-box;
 }
 .filter .filter__container p {
   margin: 0 10px 0 0;
   font-size: 1em;
   font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.restaurant {
+  margin-top: 10px;
+}
+.restaurant .restaurant__container {
+  padding: 5px;
+  box-sizing: border-box;
+  border-left: 3px solid #3498db;
+  display: flex;
+  justify-content: space-between;
+}
+.restaurant .restaurant__info h2 {
+  font-size: 1em;
+  margin-top: 0;
   margin-bottom: 5px;
 }
 
