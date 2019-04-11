@@ -4,7 +4,7 @@ import GooglePlaces from '../../services/GooglePlaces';
 
 class Map extends Component {
     state = { 
-        placeService : {}
+        loadingRestaurants : false
      }
      
     static defaultProps = {
@@ -22,10 +22,23 @@ class Map extends Component {
      */
     handleApiLoaded = (map, maps) => {
         const self = this;
-        map.addListener('dragend', () => self.getRestaurants(map));
-        map.addListener('zoom_changed', () => self.getRestaurants(map));
-        maps.event.addListenerOnce(map, 'idle', () => self.getRestaurants(map));
+        map.addListener('dragend', () => self.handleInteraction(map));
+        map.addListener('zoom_changed', () => self.handleInteraction(map));
+        maps.event.addListenerOnce(map, 'idle', () => self.handleInteraction(map));
     };
+
+    /**
+     * Function to get called when user interacts with the map
+     * @param {object} map The google map object
+     */
+    handleInteraction = (map) => {
+        if(!this.state.loadingRestaurants){
+            this.setState({loadingRestaurants: true}); 
+            this.props.toggleRestaurantsLoaded(false); // Change restaurantsLoaded (state) to false in App.js
+            this.props.emptyAllRestaurants(); // Empty restaurants array in App.js
+            this.getRestaurants(map);
+        }
+    }
 
     /**
      * Get the nearby places based on the map's radius
@@ -49,11 +62,7 @@ class Map extends Component {
             return r * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1)) * 1000;
         }
 
-        // Set restaurantsLoaded to false, and delete all current restaurants in application state
-        this.props.toggleRestaurantsLoaded(false);
-        this.props.emptyAllRestaurants();
-
-        const headers = {
+         const headers = {
             lat : map.getCenter().lat(),
             lng : map.getCenter().lng(),
             type: 'restaurant',
@@ -71,7 +80,8 @@ class Map extends Component {
                 const photo = (data.results[i].photos) ? data.results[i].photos[0].photo_reference : null ;
                 this.props.addRestaurant(name, id, rating, photo);
             }
-            this.props.toggleRestaurantsLoaded(true);
+            this.props.toggleRestaurantsLoaded(true); // Change restaurantsLoaded (state) to true in App.js
+            this.setState({loadingRestaurants: false}) 
         });
     }
 
