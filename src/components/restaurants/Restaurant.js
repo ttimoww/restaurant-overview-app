@@ -13,8 +13,6 @@ class Restaurant extends Component {
                     <div className="restaurant__info">
                         <h2 className="restaurant__name">{this.props.name}</h2>
                         <StarRatings 
-                            // rating={this.state.minRating}
-                            // name='rating'
                             rating={this.props.rating}
                             starRatedColor="rgb(248,206,11)"
                             numberOfStars={5}

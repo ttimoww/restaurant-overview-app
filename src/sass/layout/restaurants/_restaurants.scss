@@ -13,6 +13,7 @@
 
     @include scrollbar;
 
+    
     .restaurants-loading{
         color: color(blue);
         position: absolute;
@@ -20,5 +21,9 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 30px;
+    }
+
+    .no-results{
+        padding-left: 5px;
     }
 }

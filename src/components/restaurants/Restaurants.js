@@ -14,10 +14,16 @@ class Restaurants extends Component {
             }
         });
         
+    
+
         return ( 
             <div className="restaurants">
                 <Filter changeRating={this.props.changeRating} />
                 {this.props.restaurantsLoaded ? (restaurants) : (<i className="fas fa-spinner fa-pulse restaurants-loading"></i>)}
+                {   this.props.restaurants.filter((res) => res.rating > this.props.minRating).length === 0 && this.props.restaurantsLoaded 
+                    ? (<p className="no-results">No results found for this area and/or filter</p>) 
+                    : (null)
+                }
             </div>
          );
     }

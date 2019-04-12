@@ -69,10 +69,16 @@ html, body {
   transform: translate(-50%, -50%);
   font-size: 30px;
 }
+.restaurants .no-results {
+  padding-left: 5px;
+}
 
+.filter {
+  margin-bottom: 20px;
+}
 .filter .filter__container {
   border-left: 3px solid #3498db;
-  padding: 5px 5px 0px 5px;
+  padding: 5px;
   box-sizing: border-box;
 }
 .filter .filter__container p {
@@ -81,6 +87,7 @@ html, body {
   font-weight: bold;
   margin-bottom: 5px;
 }
+
 .restaurant {
   margin-top: 10px;
 }
