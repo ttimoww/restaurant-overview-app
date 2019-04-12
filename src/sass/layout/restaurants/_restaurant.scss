@@ -1,12 +1,17 @@
 .restaurant{
     margin-top: 10px;
 
+    @include respond-above(sm){
+        flex: 1;
+    }
+
     .restaurant__container{
         padding: 5px;
         box-sizing: border-box;
         border-left: 3px solid color(blue);
         display: flex;
         justify-content: space-between;
+        position: relative;
     }
 
     .restaurant__info{

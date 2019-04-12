@@ -61,6 +61,14 @@ html, body {
   background-color: #f8ce0b;
   transform: translateX(10px);
 }
+.restaurants .restaurants-loading {
+  color: #3498db;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+}
 
 .filter .filter__container {
   border-left: 3px solid #3498db;
@@ -76,12 +84,18 @@ html, body {
 .restaurant {
   margin-top: 10px;
 }
+@media (min-width: 768px) {
+  .restaurant {
+    flex: 1;
+  }
+}
 .restaurant .restaurant__container {
   padding: 5px;
   box-sizing: border-box;
   border-left: 3px solid #3498db;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 .restaurant .restaurant__info h2 {
   font-size: 1em;

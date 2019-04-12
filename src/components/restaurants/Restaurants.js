@@ -5,6 +5,7 @@ import Restaurant from './Restaurant'
 class Restaurants extends Component {
     render() { 
 
+        // Store all restaurants in restaurants const
         const restaurants = this.props.restaurants.map((res) => {
             if (this.props.minRating < res.rating){
                 return <Restaurant key={res.id} name={res.name} rating={res.rating} />;
@@ -12,11 +13,11 @@ class Restaurants extends Component {
                 return null;
             }
         });
-
+        
         return ( 
             <div className="restaurants">
                 <Filter changeRating={this.props.changeRating} />
-                {restaurants}
+                {this.props.restaurantsLoaded ? (restaurants) : (<i className="fas fa-spinner fa-pulse restaurants-loading"></i>)}
             </div>
          );
     }
