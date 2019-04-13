@@ -22,7 +22,13 @@
         }
     }
 
-    .restaurant_photo{
-
+    .restaurant__photo{
+        .restaurant__photo__placeholder{
+            background-color: lightgray;
+            width: 100px;
+            height: 100px;
+            background-position: center;
+            background-size: cover;
+        }
     }
 }

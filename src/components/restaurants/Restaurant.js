@@ -6,6 +6,7 @@ class Restaurant extends Component {
         super(props);
         this.state = {  }
     }
+    
     render() { 
         return ( 
             <div className="restaurant">
@@ -21,7 +22,9 @@ class Restaurant extends Component {
                         />
                     </div>
                     <div className="restaurant__photo">
-                        <p>photo</p>
+                        <div className="restaurant__photo__placeholder" style={{backgroundImage: `url(https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${this.props.photo}&key=${process.env.REACT_APP_GOOGLE_API_KEY})`}}>
+                        {/* <div className="restaurant__photo__placeholder" style={{backgroundImage: 'google.com'}}> */}
+                        </div>
                     </div>
                 </div>
             </div>

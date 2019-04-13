@@ -8,7 +8,7 @@ class Restaurants extends Component {
         // Store all restaurants in restaurants const
         const restaurants = this.props.restaurants.map((res) => {
             if (this.props.minRating < res.rating){
-                return <Restaurant key={res.id} name={res.name} rating={res.rating} />;
+                return <Restaurant key={res.id} name={res.name} rating={res.rating} photo={res.photo} />;
             }else{
                 return null;
             }

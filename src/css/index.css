@@ -121,5 +121,12 @@ html, body {
   margin-top: 0;
   margin-bottom: 5px;
 }
+.restaurant .restaurant__photo .restaurant__photo__placeholder {
+  background-color: lightgray;
+  width: 100px;
+  height: 100px;
+  background-position: center;
+  background-size: cover;
+}
 
 /*# sourceMappingURL=index.css.map */

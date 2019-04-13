@@ -3,78 +3,78 @@ import Map from './map/Map';
 import Restaurants from './restaurants/Restaurants';
 
 class App extends Component {
-constructor(){
-  super();
-  this.state = {
-    restaurantsLoaded : false,
-    restaurants : [],
-    minRating: 0
-  }
-}
-
-  /**
-   * Add restaurant to current state
-   * @param {string} name Name of the restaurant
-   * @param {string} id Id of the restaurant
-   * @param {string} rating Rating of the restaurant
-   * @param {string} photo Photo reference of the restaurant
-   * @param {Object} coords Restaurant coords (lat,lng)
-   */
-  handleAddRestaurant = (name, id, rating, photo, coords) =>{
-    this.setState((prevState) => {
-      return{
-        restaurants : [
-          ...prevState.restaurants,
-          {
-            name: name,
-            id: id,
-            rating: rating,
-            photo: photo,
-            coords: coords
-          }
-        ]
-      }
-    })
+  constructor(){
+    super();
+    this.state = {
+      restaurantsLoaded : false,
+      restaurants : [],
+      minRating: 0
+    }
   }
 
-  /**
-   * Toggle the restaurantsloaded property inside state'
-   * @param {boolean} bool Value to set the prop to
-   */
-  handleToggleRestaurantsLoaded = (bool) => this.setState({restaurantsLoaded: bool});
+    /**
+     * Add restaurant to current state
+     * @param {string} name Name of the restaurant
+     * @param {string} id Id of the restaurant
+     * @param {string} rating Rating of the restaurant
+     * @param {string} photo Photo reference of the restaurant
+     * @param {Object} coords Restaurant coords (lat,lng)
+     */
+    handleAddRestaurant = (name, id, rating, photo, coords) =>{
+      this.setState((prevState) => {
+        return{
+          restaurants : [
+            ...prevState.restaurants,
+            {
+              name: name,
+              id: id,
+              rating: rating,
+              photo: photo,
+              coords: coords
+            }
+          ]
+        }
+      })
+    }
 
-  /**
-   * Empty all the curent restaurants
-   */
-  handleEmptyAllRestaurants = () => this.setState({restaurants: []});
+    /**
+     * Toggle the restaurantsloaded property inside state'
+     * @param {boolean} bool Value to set the prop to
+     */
+    handleToggleRestaurantsLoaded = (bool) => this.setState({restaurantsLoaded: bool});
 
-  /**
-   * Handle the minimal rating change
-   * @param {number} rating The minimum rating
-   */
-  handleChangeRating = (rating) =>{
-    this.setState({minRating : rating})
-  }
+    /**
+     * Empty all the curent restaurants
+     */
+    handleEmptyAllRestaurants = () => this.setState({restaurants: []});
 
-  render() {
-    return (
-      <div className="app">
-        <Map 
-          restaurants={this.state.restaurants} 
-          minRating={this.state.minRating}
-          restaurantsLoaded={this.state.restaurantsLoaded} 
-          addRestaurant={this.handleAddRestaurant} 
-          toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} 
-          emptyAllRestaurants={this.handleEmptyAllRestaurants} 
-        />
-        <Restaurants 
-          restaurantsLoaded={this.state.restaurantsLoaded} 
-          restaurants={this.state.restaurants} minRating={this.state.minRating} 
-          changeRating={this.handleChangeRating} 
-        />
-      </div>
-    );
-  }
+    /**
+     * Handle the minimal rating change
+     * @param {number} rating The minimum rating
+     */
+    handleChangeRating = (rating) =>{
+      this.setState({minRating : rating})
+    }
+
+    render() {
+      return (
+        <div className="app">
+          <Map 
+            restaurants={this.state.restaurants} 
+            minRating={this.state.minRating}
+            restaurantsLoaded={this.state.restaurantsLoaded} 
+            addRestaurant={this.handleAddRestaurant} 
+            toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} 
+            emptyAllRestaurants={this.handleEmptyAllRestaurants} 
+          />
+          <Restaurants 
+            restaurantsLoaded={this.state.restaurantsLoaded} 
+            restaurants={this.state.restaurants} minRating={this.state.minRating} 
+            changeRating={this.handleChangeRating} 
+          />
+        </div>
+      );
+    }
 }
 
 export default App;
