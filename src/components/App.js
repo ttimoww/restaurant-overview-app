@@ -18,8 +18,9 @@ constructor(){
    * @param {string} id Id of the restaurant
    * @param {string} rating Rating of the restaurant
    * @param {string} photo Photo reference of the restaurant
+   * @param {Object} coords Restaurant coords (lat,lng)
    */
-  handleAddRestaurant = (name, id, rating, photo) =>{
+  handleAddRestaurant = (name, id, rating, photo, coords) =>{
     this.setState((prevState) => {
       return{
         restaurants : [
@@ -28,7 +29,8 @@ constructor(){
             name: name,
             id: id,
             rating: rating,
-            photo: photo
+            photo: photo,
+            coords: coords
           }
         ]
       }
@@ -57,8 +59,19 @@ constructor(){
   render() {
     return (
       <div className="app">
-        <Map restaurantsLoaded={this.state.restaurantsLoaded} addRestaurant={this.handleAddRestaurant} toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} emptyAllRestaurants={this.handleEmptyAllRestaurants} />
-        <Restaurants restaurantsLoaded={this.state.restaurantsLoaded} restaurants={this.state.restaurants} minRating={this.state.minRating} changeRating={this.handleChangeRating} />
+        <Map 
+          restaurants={this.state.restaurants} 
+          minRating={this.state.minRating}
+          restaurantsLoaded={this.state.restaurantsLoaded} 
+          addRestaurant={this.handleAddRestaurant} 
+          toggleRestaurantsLoaded={this.handleToggleRestaurantsLoaded} 
+          emptyAllRestaurants={this.handleEmptyAllRestaurants} 
+        />
+        <Restaurants 
+          restaurantsLoaded={this.state.restaurantsLoaded} 
+          restaurants={this.state.restaurants} minRating={this.state.minRating} 
+          changeRating={this.handleChangeRating} 
+        />
       </div>
     );
   }

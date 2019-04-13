@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import GooglePlaces from '../../services/GooglePlaces';
+import RestaurantMarker from './RestaurantMarker';
 
 class Map extends Component {
     state = { 
@@ -78,7 +79,8 @@ class Map extends Component {
                 const id = data.results[i].id;
                 const rating = data.results[i].rating || 0;
                 const photo = (data.results[i].photos) ? data.results[i].photos[0].photo_reference : null ;
-                this.props.addRestaurant(name, id, rating, photo);
+                const coords = data.results[i].geometry.location;
+                this.props.addRestaurant(name, id, rating, photo, coords);
             }
             this.props.toggleRestaurantsLoaded(true); // Change restaurantsLoaded (state) to true in App.js
             this.setState({loadingRestaurants: false}) 
@@ -86,6 +88,15 @@ class Map extends Component {
     }
 
     render() { 
+
+        let markers = this.props.restaurants.map((res) => {
+            if (this.props.minRating < res.rating) {
+                return (<RestaurantMarker key={res.id} lat={res.coords.lat} lng={res.coords.lng}/>)
+            } else{
+                return null;
+            }
+        });
+
         return ( 
             <div className="map">
                 <GoogleMapReact
@@ -94,7 +105,9 @@ class Map extends Component {
                     defaultZoom = {this.props.zoom}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => this.handleApiLoaded(map, maps)}
-                ></GoogleMapReact>
+                >
+                    {markers}
+                </GoogleMapReact>
             </div>
          );
     }

@@ -33,6 +33,18 @@ html, body {
   }
 }
 
+.restaurant-marker {
+  position: relative;
+}
+.restaurant-marker i {
+  color: #e74c3c;
+  font-size: 30px;
+  transition: transform 0.3s;
+}
+.restaurant-marker i:hover {
+  transform: scale(1.1);
+}
+
 .restaurants {
   border-top: 4px solid #3498db;
   overflow: auto;
